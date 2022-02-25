@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block navbar-content %} 
+<i class="text-warning fas fa-tshirt"></i>&nbsp;&nbsp; Add List
+{% endblock navbar-content %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body mt-5 {% block card-color %} border-dark text-light bg-secondary {% endblock card-color %}">
+                <span class="text-center">{% block card-title %} ENTER PRODUCT DATA BELLOW {% endblock card-title %}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content%}
