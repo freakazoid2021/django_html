@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from app.models import Product
 
+
 # home
 
 def home(request):
@@ -16,11 +17,11 @@ def home(request):
 def add_product(request):
     if request.method == "POST":
         if request.POST.get('product') \
-            and request.POST.get('purchase') \
-            and request.POST.get('sale') \
-            and request.POST.get('qty') \
-            and request.POST.get('gender') \
-            or request.POST.get('note'):
+                and request.POST.get('purchase') \
+                and request.POST.get('sale') \
+                and request.POST.get('qty') \
+                and request.POST.get('gender') \
+                or request.POST.get('note'):
             product = Product()
             product.product = request.POST.get('product')
             product.purchase = request.POST.get('purchase')
@@ -32,7 +33,7 @@ def add_product(request):
 
             return HttpResponseRedirect('/')
     else:
-            return render(request, 'add.html')
+        return render(request, 'add.html')
 
 
 # view 
@@ -40,14 +41,14 @@ def add_product(request):
 def product(request, product_id):
     product = Product.objects.get(id=product_id)
     if product != None:
-        return render(request, 'edit.html', {"product": product})  
+        return render(request, 'edit.html', {"product": product})
 
+    # edit
 
-# edit
 
 def edit_product(request):
     if request.method == "POST":
-        product = Product.objects.get(id = request.POST.get('id'))
+        product = Product.objects.get(id=request.POST.get('id'))
         if product != None:
             product.product = request.POST.get('product')
             product.purchase = request.POST.get('purchase')
@@ -67,6 +68,3 @@ def delete_product(request, product_id):
     product.delete()
 
     return HttpResponseRedirect('/')
-
-
-
